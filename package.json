@@ -1,0 +1,26 @@
+{
+  "name": "global",
+  "version": "1.0.0",
+  "description": "Global configuration and shared resources repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "build": "echo \"Build step completed\"",
+    "deploy": "echo \"Deploy step completed\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/o2heal/global.git"
+  },
+  "keywords": [
+    "config",
+    "shared",
+    "global"
+  ],
+  "author": "o2heal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/o2heal/global/issues"
+  },
+  "homepage": "https://github.com/o2heal/global#readme"
+}
