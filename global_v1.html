@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O2Heal | Nature, Joy, and Inner Revolution in Jeju</title>
+    <meta name="description"
+        content="Awaken your true self through active meditation in the pristine nature of Jeju Island. Success begins with joy.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --color-primary: #008C9E;
+            /* Jeju Ocean Teal */
+            --color-secondary: #2E5E4E;
+            /* Forest Green */
+            --color-accent: #F4A261;
+            /* Sunrise Orange */
+            --color-base: #FFFFFF;
+            /* Clean White */
+            --color-text: #333333;
+            /* Deep Charcoal */
+            --color-text-light: #666666;
+            --section-padding: 120px 0;
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-base);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 140, 158, 0.2);
+        }
+
+        .btn-accent {
+            background-color: var(--color-accent);
+            color: #fff;
+        }
+
+        .btn-accent:hover {
+            background-color: #e76f51;
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-accent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-cta {
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/bc6391d736799.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 1.1s;
+        }
+
+        /* About Section */
+        #about {
+            padding: var(--section-padding);
+        }
+
+        .about-wrap {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 20px;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--color-secondary);
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            color: var(--color-text-light);
+        }
+
+        .highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* Methodology Section */
+        #methodology {
+            padding: var(--section-padding);
+            background-color: #f9fbfc;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .method-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            border: 1px solid #eee;
+        }
+
+        .method-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 140, 158, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+
+        .method-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .method-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Programs Section */
+        #programs {
+            padding: var(--section-padding);
+        }
+
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .program-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-img {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
+        }
+
+        .program-body {
+            padding: 40px;
+        }
+
+        .program-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background-color: rgba(0, 140, 158, 0.1);
+            color: var(--color-primary);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .program-body h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--color-secondary);
+        }
+
+        .program-features {
+            margin-bottom: 30px;
+        }
+
+        .program-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .program-features li span {
+            color: var(--color-primary);
+            margin-right: 12px;
+        }
+
+        /* Destination Section */
+        #destination {
+            padding: var(--section-padding);
+            background-color: var(--color-secondary);
+            color: #fff;
+            text-align: center;
+        }
+
+        #destination .section-title {
+            color: #fff;
+        }
+
+        #destination p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            opacity: 0.9;
+        }
+
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .dest-img {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .dest-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            padding: var(--section-padding);
+            background-color: #f4f8f9;
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-item {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .testimonial-text {
+            font-size: 1.6rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--color-text);
+            /* Ensure deep charcoal */
+        }
+
+        .testimonial-author {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .testimonial-author span {
+            font-weight: 400;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: var(--section-padding);
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 100px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .contact-detail h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-detail p {
+            color: var(--color-text-light);
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background-color: #fff;
+        }
+
+        footer {
+            padding: 80px 0;
+            background-color: #111;
+            /* Darkened background */
+            color: #bbb;
+            /* Increased text brightness for better contrast against dark bg */
+            text-align: center;
+        }
+
+        .footer-social {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            font-size: 1.5rem;
+        }
+
+        .footer-logo {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition-smooth);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .about-wrap {
+                flex-direction: column;
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .dest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="#" class="logo-text">
+                <img src="image/logo.png" alt="O2HEAL"
+                    style="height: 40px; width: auto; display: inline-block; vertical-align: middle; margin-right: 10px;">
+                O2HEAL
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">Philosophy</a></li>
+                <li><a href="#methodology">How We Heal</a></li>
+                <li><a href="#programs">Retreats</a></li>
+                <li><a href="#destination">Jeju</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn nav-cta">Book Now</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h1>Success Begins with Joy.</h1>
+            <p>Awaken your true self through active meditation in the pristine nature of Jeju Island. Rediscover the
+                energy that transforms lives.</p>
+            <div class="hero-cta">
+                <a href="#programs" class="btn btn-primary">View Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-wrap">
+            <div class="about-text">
+                <h2>The Inner Revolution</h2>
+                <p>O2Heal is not about boring, static meditation. We believe that <span class="highlight">"Joy"</span>
+                    is the most powerful energy for transforming both life and business.</p>
+                <p>O2Heal invites you to a journey of inner revolution. We believe that joy is the key to unlocking your
+                    potential and restoring balance in life.</p>
+            </div>
+            <div class="about-image">
+                <img src="image/7ebcdbb4c7487.png" alt="Active Meditation at O2Heal">
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology">
+        <div class="container text-center">
+            <h2 class="section-title">How We Heal</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-icon"><i class="fas fa-running"></i></div>
+                    <h3>Active Meditation</h3>
+                    <p>Movement & Release. Dynamic techniques to release stress and awaken physical vitality.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Mindfulness in Nature</h3>
+                    <p>Nature Connection. Deep rest and connection sourced from Jeju's ancient forests and emerald seas.
+                    </p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Insight for Leaders</h3>
+                    <p>Wisdom & Growth. Strategic clarity and intuitive wisdom designed for conscious leaders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <h2 class="section-title">Our Retreats</h2>
+            <div class="program-cards">
+                <!-- Type A -->
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="image/8af2b6af31b86.png" alt="Corporate & CEO Retreat">
+                    </div>
+                    <div class="program-body">
+                        <span class="program-tag">For Leaders</span>
+                        <h3>Corporate & CEO</h3>
+                        <p style="margin-bottom: 20px;">Transform your leadership through clarity and joy.
+                            Custom-tailored for high-performance teams.</p>
+                        <ul class="program-features">
+                            <li><span><i class="fas fa-check"></i></span> 3-Day CEO Intensive Camp</li>
+                            <li><span><i class="fas fa-check"></i></span> Leadership & Team Building</li>
+                            <li><span><i class="fas fa-check"></i></span> Custom Executive Workshops</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire for
+                            Teams</a>
+                    </div>
+                </div>
+                <!-- Type B -->
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="image/0ec0f4f55743a.png" alt="Individual Journey">
+                    </div>
+                    <div class="program-body">
+                        <span class="program-tag">For Individuals</span>
+                        <h3>Individual Journey</h3>
+                        <p style="margin-bottom: 20px;">A personal escape to heal your soul. Perfect for travelers
+                            seeking deep rest and new awareness.</p>
+                        <ul class="program-features">
+                            <li><span><i class="fas fa-check"></i></span> 1-Day Active Class</li>
+                            <li><span><i class="fas fa-check"></i></span> 2-Night Healing Retreat</li>
+                            <li><span><i class="fas fa-check"></i></span> Deep Body-Mind Awareness</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-accent" style="width: 100%; text-align: center;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destination">
+        <div class="container">
+            <h2 class="section-title">Retreat to Jeju Island</h2>
+            <p>Located in the heart of Jeju, a UNESCO World Natural Heritage site. Breathe in the purest air and let
+                nature heal your soul. Experience the energy of the island in a space designed for clarity.</p>
+            <div class="dest-grid">
+                <div class="dest-img"><img src="image/72917cc0e6765.png" alt="Jeju Nature 1"></div>
+                <div class="dest-img"><img src="image/52b7b5b3b0e26.png" alt="Jeju Nature 2"></div>
+                <div class="dest-img"><img src="image/ec09d7e04689a.png" alt="Jeju Nature 3"></div>
+                <div class="dest-img"><img src="image/18ce479b8d1f9.png" alt="Jeju Nature 4"></div>
+                <div class="dest-img"><img src="image/4075e657cfa6c.png" alt="Jeju Nature 5"></div>
+                <div class="dest-img"><img src="image/f3d378e78acd5.png" alt="Jeju Nature 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Stories of Transformation</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"It was a life-changing experience. I learned how to manage stress and
+                        lead my team with joy."</p>
+                    <p class="testimonial-author">James K. <span>CEO of Global Logistics</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Start Your Journey</h2>
+                    <p style="margin-bottom: 40px; font-size: 1.1rem; color: var(--color-text-light);">Have questions
+                        about our programs or wish to book a custom retreat? Reach out to us, and our team will guide
+                        you.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-detail">
+                            <h4>Jeju Center</h4>
+                            <p>Handong-ri, Gujwa-eup, Jeju-si, South Korea</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail">
+                            <h4>Email Us</h4>
+                            <p>contact@o2heal.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-detail">
+                            <h4>WhatsApp</h4>
+                            <p>+82-10-XXXX-XXXX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="example@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="5" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">O2HEAL</a>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2026 O2Heal. All rights reserved. <br> Jeju Center | Seoul Office</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/821000000000" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Simple Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'hero') {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.8s ease-out';
+                observer.observe(section);
+            }
+        });
+    </script>
+</body>
+
+</html>

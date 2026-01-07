@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O2Heal | Deep Joy, Deep Silence - Version 5</title>
+    <meta name="description"
+        content="Experience the inner revolution in Jeju. O2Heal offers premium active meditation and leadership retreats focused on the philosophy that joy is the beginning of success.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep-forest: #0F281E;
+            --bg-darker: #05110D;
+            --text-cream: #F2F0E6;
+            --accent-gold: #D4AF37;
+            --accent-gold-muted: rgba(212, 175, 55, 0.6);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-heading: 'Cinzel', serif;
+            --font-sans: 'Lato', sans-serif;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep-forest);
+            color: var(--text-cream);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Grain Texture Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(15, 40, 30, 0.8), transparent);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            height: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-cream);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Section 1: Hero */
+        #hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--bg-deep-forest);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image/407dc152cd231.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) saturate(0.8);
+            transform: scale(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, var(--bg-deep-forest) 90%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            line-height: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s forwards 0.5s;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1.5s;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.6;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollLine 2s infinite;
+        }
+
+        /* Section 2: Mantra */
+        #mantra {
+            padding: 15rem 0;
+            background-color: var(--bg-deep-forest);
+            text-align: center;
+        }
+
+        .mantra-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .mantra-text strong {
+            color: var(--accent-gold);
+            display: block;
+            margin: 2rem 0;
+            font-family: var(--font-heading);
+            font-style: normal;
+            font-size: 0.8em;
+            letter-spacing: 0.3em;
+        }
+
+        /* Section 3: Awakening (Active Meditation) */
+        #awakening {
+            padding: 10rem 0;
+            background-color: var(--bg-darker);
+            overflow: hidden;
+        }
+
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .awakening-img-wrap {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .awakening-img-wrap img {
+            width: 100%;
+            display: block;
+            filter: grayscale(0.5) contrast(1.2) brightness(0.8);
+            transition: var(--transition);
+        }
+
+        .awakening-img-wrap:hover img {
+            filter: grayscale(0) contrast(1) brightness(1);
+            transform: scale(1.05);
+        }
+
+        .awakening-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .awakening-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(242, 240, 230, 0.8);
+        }
+
+        .awakening-copy-large {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-cream);
+            margin-top: 3rem;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 20px;
+        }
+
+        /* Section 4: Sanctuary */
+        #sanctuary {
+            padding: 10rem 0;
+            background-color: var(--bg-deep-forest);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 5rem;
+        }
+
+        .program-card {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 60px;
+            text-decoration: none;
+            color: var(--text-cream);
+            transition: var(--transition);
+        }
+
+        .program-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+            filter: brightness(0.4) grayscale(0.3);
+            z-index: 1;
+        }
+
+        .program-card:hover .program-bg {
+            filter: brightness(0.7) grayscale(0);
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .program-num {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .program-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card .btn-book {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .program-card:hover .btn-book {
+            opacity: 1;
+            transform: translateY(0);
+            background: var(--accent-gold);
+            color: var(--bg-darker);
+        }
+
+        /* Section 5: Master */
+        #master {
+            padding: 10rem 0;
+            background-color: var(--bg-darker);
+        }
+
+        .master-box {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .master-img {
+            flex-shrink: 0;
+            width: 400px;
+            height: 500px;
+            background-color: #222;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            filter: sepia(0.3) contrast(1.1);
+        }
+
+        .master-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .master-content h4 {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .master-name {
+            font-family: var(--font-heading);
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            padding: 8rem 0 4rem;
+            background-color: #05110D;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 3rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 4rem;
+        }
+
+        .footer-links a {
+            color: rgba(242, 240, 230, 0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            font-size: 0.7rem;
+            color: rgba(242, 240, 230, 0.3);
+            letter-spacing: 0.1em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scrollLine {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+
+            51% {
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+
+            .split-section,
+            .program-grid,
+            .master-box {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .master-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .master-img {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="image/logo.png" alt="O2Heal" class="logo">
+        <div class="nav-links">
+            <a href="#hero">Entrance</a>
+            <a href="#awakening">Method</a>
+            <a href="#sanctuary">Retreats</a>
+            <a href="#master">Philosophy</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Success Begins<br>with Joy.</h1>
+            <p class="hero-subtitle">The Inner Revolution in Jeju Island</p>
+        </div>
+        <div class="scroll-indicator">
+            <span style="font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;">Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section id="mantra">
+        <div class="container">
+            <div class="mantra-text" data-aos="fade-up" data-aos-duration="1500">
+                "Leadership is not strategy.<br>
+                It comes from the depth of your inner self."
+                <strong data-aos="fade-up" data-aos-delay="500">The Power of Stillness</strong>
+                "Joy is the seed of true success."
+            </div>
+        </div>
+    </section>
+
+    <section id="awakening">
+        <div class="container">
+            <div class="split-section">
+                <div class="awakening-img-wrap" data-aos="fade-right">
+                    <img src="image/72917cc0e6765.png" alt="Active Meditation">
+                </div>
+                <div class="awakening-content" data-aos="fade-left">
+                    <h2>Active<br>Meditation</h2>
+                    <p>To find silence, you must first shake off the noise. Our unique scientific approach bridges the
+                        gap between the modern restless mind and the ancient path of peace.</p>
+                    <div class="awakening-copy-large">
+                        Stop Thinking.<br>Start Moving.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sanctuary">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;" data-aos="fade-up">The Sanctuary</h2>
+            <p style="text-align: center; color: var(--accent-gold-muted);" data-aos="fade-up">Sacred Spaces for
+                Transformation</p>
+
+            <div class="program-grid">
+                <a href="#" class="program-card" data-aos="fade-up">
+                    <div class="program-bg" style="background-image: url('image/e3fcf3cba988f.png');"></div>
+                    <div class="program-content">
+                        <span class="program-num">01. RE-CONNECT</span>
+                        <h3>Jeju Retreats</h3>
+                        <p>Complete relaxation of body and mind in the pristine nature of Jeju Island.</p>
+                        <span class="btn-book">Explore Program</span>
+                    </div>
+                </a>
+                <a href="#" class="program-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-bg" style="background-image: url('image/18ce479b8d1f9.png');"></div>
+                    <div class="program-content">
+                        <span class="program-num">02. INNER-REVOLUTION</span>
+                        <h3>CEO & Leadership</h3>
+                        <p>Mastering leadership through a leap in consciousness and deep inner insight.</p>
+                        <span class="btn-book">Join the Circle</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="master">
+        <div class="container">
+            <div class="master-box">
+                <div class="master-img" data-aos="fade-up">
+                    <img src="image/52b7b5b3b0e26.png" alt="Master">
+                </div>
+                <div class="master-content" data-aos="fade-up" data-aos-delay="300">
+                    <h2 style="margin-bottom: 1rem; color: var(--accent-gold);">The Vision</h2>
+                    <h4>"Your life creates a completely different flow the moment you meet your true self."</h4>
+                    <p class="master-name">— Master O2Heal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="image/logo.png" alt="O2Heal" class="footer-logo">
+            <div class="footer-links">
+                <a href="#">INQUIRE</a>
+                <a href="#">LOCATION</a>
+                <a href="https://www.instagram.com/o2heal_jeju/" target="_blank">INSTAGRAM</a>
+                <a href="https://www.o2heal.kr/" target="_blank">OFFICIAL SITE (KR)</a>
+            </div>
+            <p class="copyright">© 2026 O2HEAL JEJU. ALL RIGHTS RESERVED. OXYGEN FOR YOUR SOUL.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

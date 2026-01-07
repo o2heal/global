@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O2Heal | Move to Silence | Active Meditation in Jeju</title>
+    <meta name="description"
+        content="Experience the power of Active Meditation at O2Heal Jeju. Stop thinking, start moving. Release stress and find true silence through movement.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FF6F61;
+            /* Living Coral */
+            --primary-rgb: 255, 111, 97;
+            --secondary: #1D3557;
+            /* Deep Navy */
+            --bg-light: #F1FAEE;
+            /* Off-White */
+            --text-dark: #1D3557;
+            --text-light: #F1FAEE;
+            --font-heading: 'Oswald', sans-serif;
+            --font-hero: 'Bebas Neue', cursive;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 111, 97, 0.3);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(29, 53, 87, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            color: white;
+            font-family: var(--font-heading);
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(0.5) contrast(1.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-headline {
+            font-family: var(--font-hero);
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.85;
+            margin-bottom: 20px;
+            animation: slideInDown 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            text-shadow: 10px 10px 0 rgba(255, 111, 97, 0.2);
+        }
+
+        .hero-headline span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-subcopy {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Logic Section */
+        #logic {
+            padding: 150px 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .title-accent {
+            color: var(--primary);
+        }
+
+        .logic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .logic-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .logic-text p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .infographic {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .graph-line {
+            height: 80px;
+            width: 100%;
+            position: relative;
+            background: #f0f0f0;
+            border-radius: 40px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .graph-label {
+            position: relative;
+            z-index: 2;
+        }
+
+        .graph-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            transition: width 2s ease;
+        }
+
+        .fill-stress {
+            width: 90%;
+            background: #e63946;
+        }
+
+        .fill-active {
+            width: 100%;
+            background: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        .fill-peace {
+            width: 100%;
+            background: #457b9d;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Stages Section */
+        #stages {
+            padding: 150px 0;
+            background: var(--secondary);
+            color: white;
+        }
+
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .stage-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stage-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-card:hover {
+            background: var(--primary);
+            transform: translateY(-15px);
+        }
+
+        .stage-number {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.1);
+            margin-bottom: -30px;
+            display: block;
+        }
+
+        .stage-card:hover .stage-number {
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .stage-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            filter: grayscale(1);
+            transition: var(--transition);
+        }
+
+        .stage-card:hover .stage-img {
+            filter: grayscale(0);
+        }
+
+        .stage-card h4 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Programs */
+        #programs {
+            padding: 150px 0;
+        }
+
+        .programs-flex {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .program-card {
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: scale(1.05);
+        }
+
+        .program-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .program-content {
+            padding: 40px;
+        }
+
+        .program-content h4 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .intensity {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Instructor */
+        #instructor {
+            padding: 150px 0;
+            background: var(--bg-light);
+        }
+
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .instructor-img-wrapper {
+            position: relative;
+        }
+
+        .instructor-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--primary);
+            z-index: 1;
+            border-radius: 20px;
+        }
+
+        .instructor-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .instructor-text h3 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .safe-space-box {
+            background: var(--secondary);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        /* Reviews */
+        #reviews {
+            padding: 150px 0;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+
+        .reviews-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .review-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .review-tag:hover {
+            background: var(--primary);
+            transform: rotate(3deg) scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 0;
+            background: #0d1b2a;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-msg {
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            margin-bottom: 40px;
+        }
+
+        .booking-info {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .info-col h5 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .hero-headline {
+                font-size: 5rem;
+            }
+
+            .logic-grid,
+            .instructor-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .programs-flex {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-headline {
+                font-size: 3.5rem;
+            }
+
+            .stages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-info {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="image/logo.png" alt="O2Heal Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#logic">Why Active</a>
+                <a href="#stages">Process</a>
+                <a href="#programs">Programs</a>
+                <a href="#instructor">Experts</a>
+                <a href="#booking">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <img src="image/0ed75df2f26e5.jpeg" alt="Active Movement" class="hero-bg">
+        <div class="container hero-content">
+            <h1 class="hero-headline">CAN'T SIT STILL?<br><span>DON'T.</span></h1>
+            <p class="hero-subcopy">Experience the power of Active Meditation. Release stress through movement and find
+                your true silence.</p>
+            <a href="#booking" class="btn btn-primary">Join the Movement</a>
+        </div>
+    </section>
+
+    <section id="logic">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why <span class="title-accent">Active</span> Meditation?</h2>
+            </div>
+            <div class="logic-grid">
+                <div class="logic-text">
+                    <h3>Stop Thinking, Start Moving.</h3>
+                    <p>Your modern mind is too noisy. Just sitting still often amplifies the chaos inside. To reach true
+                        silence, you must first purge the suppressed energy and emotions locked within your body.</p>
+                    <p>The O2Heal way is different. We don't ask you to be quiet. We ask you to shake, to shout, to
+                        dance, and to release—until the only thing left is pure, natural stillness.</p>
+                    <a href="#stages" class="btn btn-primary">Discover the Process</a>
+                </div>
+                <div class="infographic">
+                    <div class="graph-line">
+                        <div class="graph-fill fill-stress"></div>
+                        <span class="graph-label" style="color:white">MODERN STRESS: 90% ACCUMULATED</span>
+                    </div>
+                    <div class="graph-line">
+                        <div class="graph-fill fill-active"></div>
+                        <span class="graph-label" style="color:white">ACTIVE RELEASE: KATHARSIS REACHED</span>
+                    </div>
+                    <div class="graph-line">
+                        <div class="graph-fill fill-peace"></div>
+                        <span class="graph-label" style="color:white">DEEP PEACE: 100% TRANSFORMATION</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color:white">Journey to <span class="title-accent">Inner Peace</span>
+                </h2>
+                <p>The 4 Stages of the Active Meditation Process</p>
+            </div>
+            <div class="stages-grid">
+                <div class="stage-card">
+                    <span class="stage-number">01</span>
+                    <img src="image/59c3228e435df.png" alt="Shake" class="stage-img">
+                    <h4>SHAKE</h4>
+                    <p>Shake your entire body. Wake up the dormant cells and break the tension held in your muscles.</p>
+                </div>
+                <div class="stage-card">
+                    <span class="stage-number">02</span>
+                    <img src="image/8cf7024a8b219.png" alt="Dance" class="stage-img">
+                    <h4>DANCE</h4>
+                    <p>Move freely. Express your emotions through intuitive dance without any judgment or rules.</p>
+                </div>
+                <div class="stage-card">
+                    <span class="stage-number">03</span>
+                    <img src="image/63064b2130dee.png" alt="Sit" class="stage-img">
+                    <h4>SIT</h4>
+                    <p>After the explosion of energy, witness the natural arrival of stillness. Observe the new you.</p>
+                </div>
+                <div class="stage-card">
+                    <span class="stage-number">04</span>
+                    <img src="image/7ebcdbb4c7487.png" alt="Silence" class="stage-img">
+                    <h4>SILENCE</h4>
+                    <p>Total relaxation. Sink into the profound silence of your being and the nature surrounding you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your <span class="title-accent">Intensity</span></h2>
+            </div>
+            <div class="programs-flex">
+                <div class="program-card">
+                    <img src="image/5d302dae908b1.png" alt="One-Day" class="program-img">
+                    <div class="program-content">
+                        <span class="intensity">HIGH INTENSITY</span>
+                        <h4>One-Day Catharsis (6H)</h4>
+                        <p>A surgical reset for your brain and body. Perfect for high-stress professionals seeking a
+                            fast breakthrough.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="image/72917cc0e6765.png" alt="Jeju Detox" class="program-img">
+                    <div class="program-content">
+                        <span class="intensity">MEDIUM INTENSITY</span>
+                        <h4>Jeju Detox Camp (2 Days)</h4>
+                        <p>Combine kinetic release with the raw power of Jeju's nature. Deep detoxification through
+                            movement and mountains.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="image/9d097fab99db7.png" alt="Osho Session" class="program-img">
+                    <div class="program-content">
+                        <span class="intensity">VARIES</span>
+                        <h4>Osho Active Sessions</h4>
+                        <p>Specialized sessions based on Osho's dynamic meditation techniques. Tailored for deep
+                            emotional engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructor">
+        <div class="container">
+            <div class="instructor-grid">
+                <div class="instructor-img-wrapper">
+                    <img src="image/4aafb662a9585.webp" alt="Facilitator" class="instructor-img">
+                </div>
+                <div class="instructor-text">
+                    <h2 class="section-title">Safe Space, <br><span class="title-accent">Expert Guides</span></h2>
+                    <p>At O2Heal, we provide more than just a technique. We provide a sanctuary. Our 전문 facilitators are
+                        trained to hold space for your intensity, your tears, and your joy.</p>
+                    <div class="safe-space-box">
+                        <h4>A PROMISE OF FREEDOM</h4>
+                        <p>Forget about how you look. Forget about the others. Here, you are free to play, shout, and
+                            explore like a child again. Your safety is our priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color:white">Real <span class="title-accent">Feelings</span></h2>
+            </div>
+            <div class="reviews-container">
+                <div class="review-tag">"I finally felt free."</div>
+                <div class="review-tag">"Better than 10 years of therapy."</div>
+                <div class="review-tag">"Pure catharsis."</div>
+                <div class="review-tag">"My body remembers how to be happy."</div>
+                <div class="review-tag">"The most honest I've been with myself."</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="booking">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="image/logo.png" alt="O2Heal Logo">
+            </div>
+            <h3 class="footer-msg">Your Body Knows the Way.</h3>
+            <a href="mailto:info@o2heal.com" class="btn btn-primary" style="font-size: 1.5rem;">Book Your Session
+                Now</a>
+
+            <div class="booking-info">
+                <div class="info-col">
+                    <h5>JEJU HQ</h5>
+                    <p>123 Nature Road, Jeju Island</p>
+                    <p>South Korea</p>
+                </div>
+                <div class="info-col">
+                    <h5>SEOUL STUDIO</h5>
+                    <p>45 Healing Way, Gangnam-gu, Seoul</p>
+                    <p>South Korea</p>
+                </div>
+                <div class="info-col">
+                    <h5>CONTACT</h5>
+                    <p>WhatsApp: +82 10-XXXX-XXXX</p>
+                    <p>Email: o2heal@google.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for Scroll Reveals
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stage-card, .program-card, .logic-text, .infographic, .instructor-img-wrapper, .instructor-text').forEach(el => {
+            el.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            if (!el.classList.contains('stage-card')) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+            }
+            observer.observe(el);
+        });
+
+        // Custom class for non-stage reveals
+        const observer2 = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card, .logic-text, .infographic, .instructor-img-wrapper, .instructor-text').forEach(el => {
+            observer2.observe(el);
+        });
+    </script>
+</body>
+
+</html>

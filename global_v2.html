@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O2Heal | The Awakened Leader | Global Landing Page</title>
+    <meta name="description"
+        content="Experience Premium Leadership & Inner Revolution in Jeju. Joy is your ultimate strategy. Exclusive retreats for global leaders.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --midnight: #1A1A1A;
+            --sage: #4A5D23;
+            --siena: #E76F51;
+            --sand: #F4F1EA;
+            --text-on-dark: #F4F1EA;
+            --text-on-light: #1A1A1A;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--midnight);
+            color: var(--text-on-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            padding: 140px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 42px;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--siena);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d15d43;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-on-dark);
+            color: var(--text-on-dark);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-on-dark);
+            color: var(--midnight);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo img {
+            height: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--siena);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('image/bc6391d736799.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            animation: fadeInReveal 1.5s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInReveal 1.5s ease-out forwards 0.5s;
+        }
+
+        @keyframes fadeInReveal {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section 2: Problem */
+        #problem {
+            background-color: var(--midnight);
+            text-align: center;
+        }
+
+        .problem-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--siena);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .problem-title {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+        }
+
+        .problem-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        /* Section 3: Solution */
+        #solution {
+            background-color: var(--sand);
+            color: var(--text-on-light);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .solution-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--midnight);
+        }
+
+        .solution-tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: var(--sage);
+        }
+
+        .solution-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .solution-image {
+            position: relative;
+        }
+
+        .solution-image img {
+            border-radius: 10px;
+            box-shadow: 40px 40px 80px rgba(0, 0, 0, 0.1);
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .solution-image img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Section 4: Experience (Programs) */
+        #experience {
+            background-color: var(--midnight);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 80px;
+        }
+
+        .experience-header h2 {
+            font-size: 3.5rem;
+        }
+
+        .experience-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .exp-card {
+            background-color: #222;
+            padding: 60px 40px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-10px);
+            background-color: var(--sage);
+            border-color: var(--sage);
+        }
+
+        .exp-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .exp-card p {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        /* Section 5: Sanctuary */
+        #sanctuary {
+            background-color: var(--sand);
+            color: var(--text-on-light);
+        }
+
+        .sanctuary-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .sanctuary-title h2 {
+            font-size: 3.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        /* Section 6: Voice */
+        #voice {
+            background-color: var(--midnight);
+            padding: 180px 0;
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--siena);
+            margin-bottom: 40px;
+        }
+
+        .testimonial-box {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-size: 2.2rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-info {
+            text-align: left;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-title {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Section 7: Footer */
+        footer {
+            background-color: #111;
+            padding: 100px 0 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 100px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 1.1rem;
+            opacity: 0.6;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            color: var(--siena);
+            font-size: 0.9rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a {
+            opacity: 0.6;
+        }
+
+        .footer-links ul li a:hover {
+            opacity: 1;
+            padding-left: 10px;
+        }
+
+        .footer-bottom {
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .experience-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .experience-list {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-title,
+            .solution-content h2,
+            .experience-header h2,
+            .sanctuary-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.6rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="navbar">
+        <div class="container">
+            <nav>
+                <a href="#" class="nav-logo">
+                    <img src="image/logo.png" alt="O2Heal">
+                    O2HEAL
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#problem">Insight</a></li>
+                    <li><a href="#solution">Revolution</a></li>
+                    <li><a href="#experience">Programs</a></li>
+                    <li><a href="#sanctuary">Jeju</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="padding: 12px 25px; font-size: 0.8rem;">Inquire
+                    Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Joy is Your <br><span style="color: var(--siena);">Ultimate Strategy.</span></h1>
+                <p>Elevate your leadership and life through 'Inner Revolution' in Jeju.</p>
+                <div class="hero-btns">
+                    <a href="#experience" class="btn btn-primary">Discover the Shift</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="section">
+        <div class="container">
+            <span class="problem-subtitle">The Silent Crisis of High Performance</span>
+            <h2 class="problem-title">Leadership in the Noise</h2>
+            <p class="problem-text">
+                "Performance does not come from pressure. <br>
+                When the leader's inner world is still, the organization moves." <br><br>
+                O2Heal addresses the burnout and cognitive overload of modern executives through deep biological and
+                mental resets.
+            </p>
+        </div>
+    </section>
+
+    <section id="solution" class="section">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h2>Move to Stillness</h2>
+                    <p class="solution-tagline">Active Meditation & Insight</p>
+                    <div class="solution-text">
+                        <p><strong>Not Just Sitting:</strong> For those who find static meditation challenging, we
+                            propose 'Active Meditation'—where you move, dance, shout, and release to find genuine
+                            stillness.</p>
+                        <p><strong>Mindset Shift:</strong> A neuroscience-based approach to stress relief and intuitive
+                            breakthroughs.</p>
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <img src="image/7ebcdbb4c7487.png" alt="Active Meditation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="experience-header">
+                <div>
+                    <span class="problem-subtitle">Designed for Visionaries</span>
+                    <h2>Exclusive Retreats</h2>
+                </div>
+            </div>
+            <div class="experience-list">
+                <div class="exp-card">
+                    <div>
+                        <h3>CEO Leadership Camp</h3>
+                        <p>A 3-day deep-dive intensive for visionaries seeking absolute clarity and strategic intuition.
+                        </p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">Request Details</a>
+                </div>
+                <div class="exp-card">
+                    <div>
+                        <h3>Corporate Wellness</h3>
+                        <p>Bespoke energy optimization for high-performance teams. Redefine your organizational culture.
+                        </p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">Team Proposal</a>
+                </div>
+                <div class="exp-card">
+                    <div>
+                        <h3>Private Intensive</h3>
+                        <p>One-on-one personal transformation guided by master facilitators. Deep focus for drastic
+                            change.</p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">Book 1:1</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sanctuary" class="section">
+        <div class="container">
+            <div class="sanctuary-title">
+                <span class="problem-subtitle">The Sacred Energy</span>
+                <h2>Jeju: The Island of Healing</h2>
+                <p style="max-width: 600px; margin: 20px auto; opacity: 0.7;">Jeju is not just an island; it is a
+                    sanctuary of healing energy where the basalt and the sea meet to reset your soul.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wide"><img src="image/72917cc0e6765.png" alt="Jeju 1"></div>
+                <div class="gallery-item tall"><img src="image/8e3e0d41ac8e7.png" alt="Jeju 2"></div>
+                <div class="gallery-item"><img src="image/52b7b5b3b0e26.png" alt="Jeju 3"></div>
+                <div class="gallery-item"><img src="image/18ce479b8d1f9.png" alt="Jeju 4"></div>
+                <div class="gallery-item wide"><img src="image/ec09d7e04689a.png" alt="Jeju 5"></div>
+                <div class="gallery-item"><img src="image/4075e657cfa6c.png" alt="Jeju 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voice" class="section">
+        <div class="container">
+            <div class="testimonial-box">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"This retreat wasn't just about resting. It redefined my approach to
+                    management. I returned with a clarity I hadn't felt in years."</p>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <p class="author-name">CFO of Global Tech Firm</p>
+                        <p class="author-title">London, UK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--midnight); padding: 140px 0; text-align: center;">
+        <div class="container">
+            <h2 class="serif" style="font-size: 4rem; margin-bottom: 30px;">Ready to Revolutionize?</h2>
+            <p style="font-size: 1.5rem; opacity: 0.7; margin-bottom: 50px;">Connect with our global concierge team.</p>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="mailto:global@o2heal.kr" class="btn btn-primary"><i class="fas fa-envelope"
+                        style="margin-right: 10px;"></i> global@o2heal.kr</a>
+                <a href="#" class="btn btn-outline"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>
+                    WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2 class="serif">O2Heal</h2>
+                    <p>Pioneering the Inner Revolution for the next generation of global leaders.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Locations</h4>
+                    <ul>
+                        <li>Jeju Center: 123 Healing Rd, Jeju</li>
+                        <li>Seoul Hub: Gangnam-gu, Seoul</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 O2Heal Global. All rights reserved.</p>
+                <div style="display: flex; gap: 30px;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
