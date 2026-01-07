@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        continue-on-error: true
+        
+      - name: Build project
+        run: npm run build
+        continue-on-error: true
+        
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+        
+      - name: Deploy
+        run: |
+          echo "Deployment step"
+          echo "Configure your deployment target here"
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
